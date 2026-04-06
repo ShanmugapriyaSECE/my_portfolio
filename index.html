@@ -1,11 +1,622 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Shanmuga Priya S – B.E. CSE (AI&ML) student, dashboard developer & data enthusiast. Explore my projects, skills, and resume.">
+<title>Shanmuga Priya S | Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0f;--bg2:#0f0f1a;--card:rgba(255,255,255,.04);--card-h:rgba(255,255,255,.07);
+  --border:rgba(255,255,255,.08);--glow:rgba(139,92,246,.4);
+  --purple:#8b5cf6;--violet:#7c3aed;--pink:#ec4899;--cyan:#06b6d4;--green:#10b981;--amber:#f59e0b;
+  --t1:#f1f5f9;--t2:#94a3b8;--t3:#64748b;
+  --gm:linear-gradient(135deg,#8b5cf6,#ec4899);
+  --ga:linear-gradient(135deg,#06b6d4,#8b5cf6);
+  --tr:.3s cubic-bezier(.4,0,.2,1);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);line-height:1.6;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at top left,rgba(139,92,246,.1) 0%,transparent 55%),radial-gradient(ellipse at bottom right,rgba(236,72,153,.07) 0%,transparent 55%);pointer-events:none;z-index:0}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--purple);border-radius:3px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 5%;background:rgba(10,10,15,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.logo{font-size:1.2rem;font-weight:800;background:var(--gm);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-0.5px}
+.nav-links{display:flex;gap:1.8rem;list-style:none}
+.nav-links a{color:var(--t2);text-decoration:none;font-size:.88rem;font-weight:500;position:relative;padding-bottom:2px;transition:color var(--tr)}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:2px;background:var(--gm);border-radius:2px;transition:width var(--tr)}
+.nav-links a:hover{color:var(--t1)}.nav-links a:hover::after{width:100%}
+.nav-cta{background:var(--gm);color:#fff;border:none;padding:.5rem 1.3rem;border-radius:50px;font-weight:600;font-size:.85rem;cursor:pointer;text-decoration:none;transition:var(--tr);box-shadow:0 4px 20px rgba(139,92,246,.35)}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(139,92,246,.5)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:8rem 5% 5rem;position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(139,92,246,.15);border:1px solid rgba(139,92,246,.3);color:#c4b5fd;padding:.4rem 1rem;border-radius:50px;font-size:.8rem;font-weight:500;margin-bottom:1.5rem;animation:fdU .6s ease}
+.badge-dot{width:7px;height:7px;background:var(--purple);border-radius:50%;animation:pulse 2s infinite}
+.hero h1{font-size:clamp(2.6rem,6vw,4.8rem);font-weight:900;line-height:1.08;letter-spacing:-2px;margin-bottom:1rem;animation:fdU .7s ease .1s both}
+.hero h1 span{background:var(--gm);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:clamp(1rem,2.5vw,1.3rem);color:var(--t2);margin-bottom:.6rem;animation:fdU .7s ease .2s both}
+.hero-typed{font-family:'Fira Code',monospace;font-size:.95rem;color:var(--cyan);margin-bottom:2rem;animation:fdU .7s ease .3s both}
+.hero-btns{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;animation:fdU .7s ease .4s both}
+.btn-p{background:var(--gm);color:#fff;padding:.8rem 2rem;border-radius:50px;font-weight:700;font-size:.92rem;text-decoration:none;border:none;cursor:pointer;transition:var(--tr);box-shadow:0 4px 24px rgba(139,92,246,.4)}
+.btn-p:hover{transform:translateY(-3px);box-shadow:0 10px 36px rgba(139,92,246,.55)}
+.btn-o{background:transparent;color:var(--t1);padding:.8rem 2rem;border-radius:50px;font-weight:600;font-size:.92rem;text-decoration:none;border:1px solid var(--border);cursor:pointer;transition:var(--tr)}
+.btn-o:hover{border-color:var(--purple);color:var(--purple);transform:translateY(-3px);background:rgba(139,92,246,.08)}
+.hero-stats{display:flex;justify-content:center;gap:3rem;margin-top:4rem;animation:fdU .7s ease .5s both;flex-wrap:wrap}
+.stat-n{font-size:2rem;font-weight:800;background:var(--gm);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat-l{font-size:.75rem;color:var(--t3);text-transform:uppercase;letter-spacing:1px;margin-top:.15rem}
+
+/* SECTION */
+section{padding:5.5rem 5%;position:relative;z-index:1}
+.sh{text-align:center;margin-bottom:3.5rem}
+.stag{display:inline-block;background:rgba(139,92,246,.15);border:1px solid rgba(139,92,246,.3);color:#c4b5fd;padding:.28rem .85rem;border-radius:50px;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:.8rem}
+.stit{font-size:clamp(1.7rem,4vw,2.6rem);font-weight:800;letter-spacing:-1px;margin-bottom:.7rem}
+.stit span{background:var(--gm);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.sdesc{color:var(--t2);font-size:.95rem;max-width:500px;margin:0 auto}
+
+/* CARD */
+.card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:1.7rem;transition:var(--tr);position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gm);opacity:0;transition:var(--tr)}
+.card:hover{background:var(--card-h);border-color:var(--glow);transform:translateY(-4px);box-shadow:0 0 40px rgba(139,92,246,.2)}
+.card:hover::before{opacity:1}
+
+/* ABOUT */
+.about-g{display:grid;grid-template-columns:1fr 1.4fr;gap:3rem;align-items:center;max-width:950px;margin:0 auto}
+.about-av{width:240px;height:240px;border-radius:50%;background:var(--gm);padding:4px;box-shadow:0 0 60px rgba(139,92,246,.35);margin:0 auto;animation:float 4s ease-in-out infinite}
+.about-av-in{width:100%;height:100%;border-radius:50%;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:4.5rem}
+.about-text h3{font-size:1.4rem;font-weight:700;margin-bottom:.9rem}
+.about-text p{color:var(--t2);margin-bottom:1rem;line-height:1.8;font-size:.93rem}
+.info-r{display:flex;align-items:center;gap:.7rem;font-size:.87rem;margin-bottom:.5rem}
+.info-r .ic{color:var(--purple);width:18px}
+.info-r span,.info-r a{color:var(--t2)}
+.info-r a{color:var(--cyan);text-decoration:none}.info-r a:hover{text-decoration:underline}
+
+/* EDUCATION */
+.edu-g{display:grid;gap:1.3rem;max-width:780px;margin:0 auto}
+.edu-c{display:flex;gap:1.3rem;align-items:flex-start}
+.edu-ic{width:48px;height:48px;flex-shrink:0;background:var(--gm);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;box-shadow:0 4px 16px rgba(139,92,246,.3)}
+.edu-yr{display:inline-block;background:rgba(139,92,246,.15);color:#c4b5fd;padding:.18rem .65rem;border-radius:50px;font-size:.73rem;font-weight:600;margin-bottom:.4rem;border:1px solid rgba(139,92,246,.25)}
+.edu-school{font-size:1rem;font-weight:700;margin-bottom:.25rem}
+.edu-deg{color:var(--t2);font-size:.85rem}
+.edu-sc{display:inline-flex;align-items:center;gap:.3rem;background:rgba(16,185,129,.12);color:var(--green);border:1px solid rgba(16,185,129,.3);padding:.18rem .65rem;border-radius:50px;font-size:.75rem;font-weight:600;margin-top:.4rem}
+
+/* PROJECTS */
+.proj-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.6rem}
+.proj-h{display:flex;align-items:flex-start;justify-content:space-between;gap:.8rem;margin-bottom:.8rem}
+.proj-ic{width:46px;height:46px;background:var(--gm);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.proj-yr{color:var(--t3);font-size:.78rem;font-weight:500;padding:.2rem .6rem;background:rgba(255,255,255,.05);border-radius:50px;border:1px solid var(--border)}
+.proj-t{font-size:1rem;font-weight:700;margin-bottom:.35rem}
+.proj-d{color:var(--t2);font-size:.85rem;line-height:1.7;margin-bottom:1rem}
+.tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:auto}
+.tag{background:rgba(139,92,246,.12);border:1px solid rgba(139,92,246,.22);color:#c4b5fd;padding:.2rem .6rem;border-radius:50px;font-size:.72rem;font-weight:500;font-family:'Fira Code',monospace}
+
+/* INTERNSHIP */
+.int-c{max-width:780px;margin:0 auto}
+.int-h{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1.2rem;flex-wrap:wrap;gap:.7rem}
+.int-co{font-size:1.15rem;font-weight:800}
+.int-b{background:rgba(245,158,11,.15);border:1px solid rgba(245,158,11,.3);color:var(--amber);padding:.28rem .85rem;border-radius:50px;font-size:.78rem;font-weight:600}
+.int-d{color:var(--t3);font-size:.8rem;margin-top:.25rem;text-align:right}
+.int-l{list-style:none;display:flex;flex-direction:column;gap:.65rem}
+.int-l li{display:flex;gap:.8rem;color:var(--t2);font-size:.88rem}
+.int-l li::before{content:'▸';color:var(--purple);flex-shrink:0}
+
+/* SKILLS */
+.sk-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.3rem}
+.sk-ct{display:flex;align-items:center;gap:.65rem;font-size:.9rem;font-weight:700;margin-bottom:1.1rem}
+.sk-l{display:flex;flex-wrap:wrap;gap:.45rem}
+.sk-p{background:rgba(255,255,255,.06);border:1px solid var(--border);color:var(--t2);padding:.32rem .85rem;border-radius:50px;font-size:.8rem;font-weight:500;transition:var(--tr);cursor:default}
+.sk-p:hover{background:rgba(139,92,246,.15);border-color:rgba(139,92,246,.4);color:#c4b5fd;transform:translateY(-2px)}
+
+/* CERTIFICATIONS */
+.cert-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.1rem;max-width:880px;margin:0 auto}
+.cert-c{display:flex;align-items:center;gap:.9rem}
+.cert-ic{width:40px;height:40px;flex-shrink:0;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+.ci-p{background:rgba(139,92,246,.2)}.ci-c{background:rgba(6,182,212,.2)}.ci-a{background:rgba(245,158,11,.2)}.ci-g{background:rgba(16,185,129,.2)}
+.cert-n{font-size:.85rem;font-weight:600;margin-bottom:.15rem}
+.cert-pr{color:var(--t3);font-size:.76rem}
+
+/* POSITIONS */
+.pos-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.3rem}
+.pos-h{display:flex;align-items:center;gap:.75rem;margin-bottom:.8rem}
+.pos-ic{width:42px;height:42px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+.pi-p{background:rgba(139,92,246,.2)}.pi-c{background:rgba(6,182,212,.2)}.pi-pk{background:rgba(236,72,153,.2)}
+.pos-t{font-size:.9rem;font-weight:700}
+.pos-du{color:var(--t3);font-size:.74rem;margin-top:.1rem}
+.pos-ds{color:var(--t2);font-size:.83rem;line-height:1.7}
+
+/* RESUME */
+#resume{background:linear-gradient(135deg,rgba(139,92,246,.06),rgba(236,72,153,.04));border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.res-wrap{max-width:840px;margin:0 auto}
+.res-card{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:22px;overflow:hidden;box-shadow:0 4px 30px rgba(0,0,0,.4)}
+.res-top{background:var(--gm);padding:1.8rem 2.2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.res-name{font-size:1.7rem;font-weight:900;color:#fff;letter-spacing:-.5px}
+.res-contacts{display:flex;flex-wrap:wrap;gap:.45rem}
+.res-ci{background:rgba(255,255,255,.2);color:#fff;padding:.22rem .7rem;border-radius:50px;font-size:.73rem;font-weight:500;display:flex;align-items:center;gap:.35rem}
+.res-body{padding:1.8rem 2.2rem}
+.res-sec{margin-bottom:2rem}
+.res-sec:last-child{margin-bottom:0}
+.res-sec-t{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--purple);margin-bottom:1rem;display:flex;align-items:center;gap:.7rem}
+.res-sec-t::after{content:'';flex:1;height:1px;background:var(--border)}
+.res-en{margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,.04)}
+.res-en:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.res-eh{display:flex;align-items:flex-start;justify-content:space-between;gap:.8rem;margin-bottom:.3rem;flex-wrap:wrap}
+.res-et{font-size:.92rem;font-weight:700}
+.res-em{color:var(--t3);font-size:.76rem;font-weight:500;text-align:right}
+.res-es{color:var(--cyan);font-size:.8rem;font-weight:600;margin-bottom:.4rem}
+.res-esc{display:inline-block;background:rgba(16,185,129,.12);color:var(--green);border:1px solid rgba(16,185,129,.25);padding:.13rem .55rem;border-radius:50px;font-size:.72rem;font-weight:600}
+.res-ed{color:var(--t2);font-size:.83rem;line-height:1.75}
+.res-sl{display:flex;gap:.5rem;font-size:.83rem;margin-bottom:.55rem;align-items:flex-start}
+.res-slb{color:var(--purple);font-weight:700;min-width:145px;flex-shrink:0}
+.res-slv{color:var(--t2)}
+.res-cl{display:flex;align-items:center;gap:.55rem;font-size:.83rem;color:var(--t2);margin-bottom:.4rem}
+.res-cl::before{content:'◆';color:var(--purple);font-size:.48rem;flex-shrink:0}
+.res-dl{display:flex;justify-content:center;gap:1rem;padding:1.2rem 2.2rem;border-top:1px solid var(--border);flex-wrap:wrap}
+
+/* CONTACT */
+.contact-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1.1rem;max-width:680px;margin:0 auto}
+.con-c{text-align:center}
+.con-ic{font-size:1.9rem;margin-bottom:.6rem}
+.con-l{color:var(--t3);font-size:.76rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:.25rem}
+.con-a{color:var(--cyan);text-decoration:none;font-size:.85rem;font-weight:500;transition:color var(--tr);display:block;word-break:break-all}
+.con-a:hover{color:var(--purple)}
+
+/* FOOTER */
+footer{text-align:center;padding:2rem 5%;border-top:1px solid var(--border);color:var(--t3);font-size:.83rem;position:relative;z-index:1}
+footer span{background:var(--gm);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:600}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* KEYFRAMES */
+@keyframes fdU{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .nav-links{display:none}
+  .about-g{grid-template-columns:1fr;text-align:center}
+  .info-r{justify-content:center}
+  .hero-stats{gap:1.5rem}
+  .res-top{flex-direction:column}
+  .res-body,.res-dl{padding:1.3rem}
+  .res-eh{flex-direction:column;gap:.15rem}
+  .res-em{text-align:left}
+}
+</style>
 </head>
 <body>
-    <h1>Hello Shanmuga Priya</h1>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">SP.</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#internship">Internship</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#resume">Resume</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#resume" class="nav-cta">View Resume</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <div class="hero-badge"><span class="badge-dot"></span>Open to Opportunities</div>
+    <h1>Hi, I'm <span>Shanmuga Priya</span> 👋</h1>
+    <p class="hero-sub">B.E. CSE (AI &amp; ML) | Dashboard Developer | Data Enthusiast</p>
+    <p class="hero-typed">// Building intelligent dashboards &amp; data-driven solutions</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-p">View Projects</a>
+      <a href="#resume" class="btn-o">My Resume</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-n">3</div><div class="stat-l">Projects Built</div></div>
+      <div><div class="stat-n">8.0</div><div class="stat-l">CGPA</div></div>
+      <div><div class="stat-n">38+</div><div class="stat-l">Problems Solved</div></div>
+      <div><div class="stat-n">4+</div><div class="stat-l">Certifications</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="sh reveal">
+    <div class="stag">About Me</div>
+    <h2 class="stit">Who I <span>Am</span></h2>
+    <p class="sdesc">Passionate about transforming raw data into meaningful insights</p>
+  </div>
+  <div class="about-g reveal">
+    <div>
+      <div class="about-av">
+        <div class="about-av-in">👩‍💻</div>
+      </div>
+    </div>
+    <div class="about-text">
+      <h3>Shanmuga Priya S</h3>
+      <p>I'm a 1st year B.E. CSE (AI &amp; ML) student at Sri Eshwar College of Engineering, passionate about building interactive dashboards that turn complex data into clear, actionable insights. I love working with React, TypeScript, and Supabase.</p>
+      <p>During my internship at Pricol Limited, I designed and developed real-world dashboards for operational and business metrics — an experience that sharpened my technical and collaborative skills.</p>
+      <div>
+        <div class="info-r"><span class="ic">📍</span><span>Coimbatore, Tamil Nadu</span></div>
+        <div class="info-r"><span class="ic">📧</span><a href="mailto:shanmugapriya.s2024aiml@sece.ac.in">shanmugapriya.s2024aiml@sece.ac.in</a></div>
+        <div class="info-r"><span class="ic">📞</span><span>+91 6385495420</span></div>
+        <div class="info-r"><span class="ic">🐙</span><a href="https://github.com/ShanmugapriyaSECE" target="_blank">GitHub Profile</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" style="background:rgba(255,255,255,.015);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="sh reveal">
+    <div class="stag">Education</div>
+    <h2 class="stit">Academic <span>Journey</span></h2>
+  </div>
+  <div class="edu-g">
+    <div class="card edu-c reveal">
+      <div class="edu-ic">🎓</div>
+      <div>
+        <div class="edu-yr">2024 – 2028</div>
+        <div class="edu-school">Sri Eshwar College of Engineering</div>
+        <div class="edu-deg">B.E. Computer Science &amp; Engineering (AI &amp; ML)</div>
+        <div class="edu-sc">⭐ CGPA: 8.00 (2nd Semester)</div>
+      </div>
+    </div>
+    <div class="card edu-c reveal">
+      <div class="edu-ic">📚</div>
+      <div>
+        <div class="edu-yr">2023 – 2024</div>
+        <div class="edu-school">Sacred Heart Girl's Anglo Indian Higher Secondary School</div>
+        <div class="edu-deg">HSC (Higher Secondary Certificate)</div>
+        <div class="edu-sc">⭐ 80%</div>
+      </div>
+    </div>
+    <div class="card edu-c reveal">
+      <div class="edu-ic">📖</div>
+      <div>
+        <div class="edu-yr">2021 – 2022</div>
+        <div class="edu-school">Sacred Heart Girl's Anglo Indian Higher Secondary School</div>
+        <div class="edu-deg">SSLC (Secondary School Leaving Certificate)</div>
+        <div class="edu-sc">⭐ 84%</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERNSHIP -->
+<section id="internship">
+  <div class="sh reveal">
+    <div class="stag">Experience</div>
+    <h2 class="stit">Work <span>Experience</span></h2>
+  </div>
+  <div class="card int-c reveal">
+    <div class="int-h">
+      <div>
+        <div class="int-co">Pricol Limited, Coimbatore</div>
+        <div style="color:var(--t3);font-size:.8rem;margin-top:.2rem">Dashboard Developer Intern</div>
+      </div>
+      <div>
+        <div class="int-b">Internship</div>
+        <div class="int-d">Dec 3, 2025 – Dec 30, 2025</div>
+      </div>
+    </div>
+    <ul class="int-l">
+      <li>Designed and developed interactive dashboards to visualize operational and business metrics using React, TypeScript, and Recharts.</li>
+      <li>Transformed raw data into structured formats for reporting and analysis, enabling data-driven decision making.</li>
+      <li>Collaborated with stakeholders to understand requirements and present actionable insights through clear visualizations.</li>
+    </ul>
+    <div style="display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.1rem">
+      <span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Supabase</span><span class="tag">Recharts</span><span class="tag">Tailwind CSS</span><span class="tag">Data Visualization</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" style="background:rgba(255,255,255,.015);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="sh reveal">
+    <div class="stag">Projects</div>
+    <h2 class="stit">Featured <span>Work</span></h2>
+    <p class="sdesc">Real-world dashboards built during internship at Pricol Limited</p>
+  </div>
+  <div class="proj-g">
+    <div class="card reveal" style="display:flex;flex-direction:column;gap:.8rem">
+      <div class="proj-h">
+        <div class="proj-ic">📊</div>
+        <span class="proj-yr">2025</span>
+      </div>
+      <div class="proj-t">PDN Dashboard</div>
+      <div class="proj-d">A streamlined dashboard for tracking and visualizing Plan vs. Actual performance across teams. Features interactive visualizations, secure RBAC authentication, and real-time data management for effective financial tracking and reporting.</div>
+      <div class="tags"><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Vite</span><span class="tag">Supabase</span><span class="tag">Tailwind</span><span class="tag">Recharts</span><span class="tag">React Query</span></div>
+    </div>
+    <div class="card reveal" style="display:flex;flex-direction:column;gap:.8rem">
+      <div class="proj-h">
+        <div class="proj-ic">🚀</div>
+        <span class="proj-yr">2025</span>
+      </div>
+      <div class="proj-t">NPD Project Status Dashboard</div>
+      <div class="proj-d">A lightweight dashboard for tracking New Product Development project status across teams. Visualizes planned, completed, and in-progress projects through interactive charts and summary tables with clear performance monitoring.</div>
+      <div class="tags"><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Vite</span><span class="tag">Supabase</span><span class="tag">Tailwind</span><span class="tag">Recharts</span><span class="tag">React Query</span></div>
+    </div>
+    <div class="card reveal" style="display:flex;flex-direction:column;gap:.8rem">
+      <div class="proj-h">
+        <div class="proj-ic">♻️</div>
+        <span class="proj-yr">2025</span>
+      </div>
+      <div class="proj-t">ESG Waste Management Dashboard</div>
+      <div class="proj-d">A web-based dashboard to monitor and analyze ESG-related waste management data in manufacturing. Captures waste generation across categories and time periods, supporting environmental performance tracking and sustainability initiatives.</div>
+      <div class="tags"><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Vite</span><span class="tag">Supabase</span><span class="tag">Tailwind</span><span class="tag">Recharts</span><span class="tag">React Query</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="sh reveal">
+    <div class="stag">Skills</div>
+    <h2 class="stit">Technical <span>Arsenal</span></h2>
+  </div>
+  <div class="sk-g">
+    <div class="card reveal">
+      <div class="sk-ct"><span>💻</span> Programming Languages</div>
+      <div class="sk-l">
+        <span class="sk-p">C</span><span class="sk-p">C++</span><span class="sk-p">Python</span><span class="sk-p">Java</span><span class="sk-p">Data Structures</span><span class="sk-p">OOP</span>
+      </div>
+    </div>
+    <div class="card reveal">
+      <div class="sk-ct"><span>🌐</span> Web Technologies</div>
+      <div class="sk-l">
+        <span class="sk-p">HTML</span><span class="sk-p">CSS</span><span class="sk-p">JavaScript</span><span class="sk-p">React</span><span class="sk-p">TypeScript</span><span class="sk-p">Tailwind CSS</span>
+      </div>
+    </div>
+    <div class="card reveal">
+      <div class="sk-ct"><span>🛠️</span> Tools &amp; Platforms</div>
+      <div class="sk-l">
+        <span class="sk-p">SQL</span><span class="sk-p">MySQL Workbench</span><span class="sk-p">Excel</span><span class="sk-p">VS Code</span><span class="sk-p">GitHub</span><span class="sk-p">Canva</span><span class="sk-p">Eclipse</span>
+      </div>
+    </div>
+    <div class="card reveal">
+      <div class="sk-ct"><span>📦</span> Libraries &amp; Frameworks</div>
+      <div class="sk-l">
+        <span class="sk-p">Supabase</span><span class="sk-p">Recharts</span><span class="sk-p">React Query</span><span class="sk-p">Vite</span><span class="sk-p">Power BI</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications" style="background:rgba(255,255,255,.015);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="sh reveal">
+    <div class="stag">Certifications</div>
+    <h2 class="stit">Achievements &amp; <span>Certs</span></h2>
+  </div>
+  <div class="cert-g">
+    <div class="card cert-c reveal"><div class="cert-ic ci-p">🐍</div><div><div class="cert-n">Python Using AI Workshop</div><div class="cert-pr">AI For Techies · 2025</div></div></div>
+    <div class="card cert-c reveal"><div class="cert-ic ci-c">📊</div><div><div class="cert-n">Data Visualization using Power BI</div><div class="cert-pr">Great Learning · 2024</div></div></div>
+    <div class="card cert-c reveal"><div class="cert-ic ci-a">⚙️</div><div><div class="cert-n">C for Beginners</div><div class="cert-pr">Great Learning · 2024</div></div></div>
+    <div class="card cert-c reveal"><div class="cert-ic ci-g">🏅</div><div><div class="cert-n">C Hands-On Certificate</div><div class="cert-pr">Skill Rack</div></div></div>
+    <div class="card cert-c reveal"><div class="cert-ic ci-p">👨‍🍳</div><div><div class="cert-n">CodeChef Profile</div><div class="cert-pr">38+ Problems Solved</div></div></div>
+  </div>
+</section>
+
+<!-- POSITIONS -->
+<section id="positions">
+  <div class="sh reveal">
+    <div class="stag">Leadership</div>
+    <h2 class="stit">Positions of <span>Responsibility</span></h2>
+  </div>
+  <div class="pos-g">
+    <div class="card reveal">
+      <div class="pos-h"><div class="pos-ic pi-p">📋</div><div><div class="pos-t">Placement Coordinator</div><div class="pos-du">2024 – Present</div></div></div>
+      <p class="pos-ds">Coordinating placement training activities, assisting with student-company interactions, and managing communication within the placement cell at Sri Eshwar College of Engineering.</p>
+    </div>
+    <div class="card reveal">
+      <div class="pos-h"><div class="pos-ic pi-c">💡</div><div><div class="pos-t">Hackathon Coordinator</div><div class="pos-du">2024 – Present</div></div></div>
+      <p class="pos-ds">Organized coding and hackathon events, managed participant teams, and facilitated event logistics and mentor interactions at Sri Eshwar College of Engineering.</p>
+    </div>
+    <div class="card reveal">
+      <div class="pos-h"><div class="pos-ic pi-pk">🌟</div><div><div class="pos-t">Student Mentor</div><div class="pos-du">2024 – Present</div></div></div>
+      <p class="pos-ds">Guided junior students academically and technically, supported their project development, and assisted with college onboarding at Sri Eshwar College of Engineering.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RESUME -->
+<section id="resume">
+  <div class="sh reveal">
+    <div class="stag">Resume</div>
+    <h2 class="stit">My <span>Resume</span></h2>
+    <p class="sdesc">A complete overview of my education, experience, and skills</p>
+  </div>
+  <div class="res-wrap reveal">
+    <div class="res-card">
+      <!-- Top Bar -->
+      <div class="res-top">
+        <div class="res-name">Shanmuga Priya S</div>
+        <div class="res-contacts">
+          <span class="res-ci">📞 +91 6385495420</span>
+          <span class="res-ci">📧 shanmugapriya.s2024aiml@sece.ac.in</span>
+          <span class="res-ci">🐙 GitHub</span>
+          <span class="res-ci">💼 LinkedIn</span>
+        </div>
+      </div>
+      <!-- Body -->
+      <div class="res-body">
+        <!-- Education -->
+        <div class="res-sec">
+          <div class="res-sec-t">Education</div>
+          <div class="res-en">
+            <div class="res-eh"><div class="res-et">Sri Eshwar College of Engineering</div><div class="res-em">2024 – 2028</div></div>
+            <div class="res-es">B.E. Computer Science &amp; Engineering (AI &amp; ML)</div>
+            <span class="res-esc">CGPA: 8.00 (2nd Semester)</span>
+          </div>
+          <div class="res-en">
+            <div class="res-eh"><div class="res-et">Sacred Heart Girl's Anglo Indian Higher Secondary School</div><div class="res-em">2023 – 2024</div></div>
+            <div class="res-es">HSC</div>
+            <span class="res-esc">80%</span>
+          </div>
+          <div class="res-en">
+            <div class="res-eh"><div class="res-et">Sacred Heart Girl's Anglo Indian Higher Secondary School</div><div class="res-em">2021 – 2022</div></div>
+            <div class="res-es">SSLC</div>
+            <span class="res-esc">84%</span>
+          </div>
+        </div>
+        <!-- Internship -->
+        <div class="res-sec">
+          <div class="res-sec-t">Internship</div>
+          <div class="res-en">
+            <div class="res-eh"><div class="res-et">Pricol Limited, Coimbatore</div><div class="res-em">Dec 3 – Dec 30, 2025</div></div>
+            <div class="res-es">Dashboard Developer Intern</div>
+            <p class="res-ed">Designed and developed interactive dashboards to visualize operational and business metrics. Transformed raw data into structured formats for reporting and analysis. Collaborated with stakeholders to understand requirements and present actionable insights.</p>
+          </div>
+        </div>
+        <!-- Projects -->
+        <div class="res-sec">
+          <div class="res-sec-t">Projects</div>
+          <div class="res-en">
+            <div class="res-eh"><div class="res-et">PDN Dashboard</div><div class="res-em">2025</div></div>
+            <div class="res-es">React · TypeScript · Vite · Supabase · Tailwind CSS · Recharts · React Query</div>
+            <p class="res-ed">Dashboard for tracking Plan vs. Actual performance across teams with interactive visualizations, secure RBAC, and real-time data management.</p>
+          </div>
+          <div class="res-en">
+            <div class="res-eh"><div class="res-et">NPD Project Status Dashboard</div><div class="res-em">2025</div></div>
+            <div class="res-es">React · TypeScript · Vite · Supabase · Tailwind CSS · Recharts · React Query</div>
+            <p class="res-ed">Dashboard for tracking New Product Development project status with interactive charts and summary tables for planned, completed, and in-progress projects.</p>
+          </div>
+          <div class="res-en">
+            <div class="res-eh"><div class="res-et">ESG Waste Management Dashboard</div><div class="res-em">2025</div></div>
+            <div class="res-es">React · TypeScript · Vite · Supabase · Tailwind CSS · Recharts · React Query</div>
+            <p class="res-ed">Dashboard to monitor and analyze ESG-related waste management data in manufacturing, supporting environmental performance tracking and sustainability initiatives.</p>
+          </div>
+        </div>
+        <!-- Skills -->
+        <div class="res-sec">
+          <div class="res-sec-t">Skills</div>
+          <div class="res-sl"><div class="res-slb">Programming:</div><div class="res-slv">C++, C, Python, Java, Data Structures (C), OOP, HTML, CSS, JavaScript (Basics)</div></div>
+          <div class="res-sl"><div class="res-slb">Tools:</div><div class="res-slv">SQL DB, Excel, VS Code, GitHub, Canva, Eclipse, MySQL Workbench</div></div>
+          <div class="res-sl"><div class="res-slb">Frameworks:</div><div class="res-slv">React, TypeScript, Tailwind CSS, Supabase, Recharts, React Query, Vite</div></div>
+        </div>
+        <!-- Certifications -->
+        <div class="res-sec">
+          <div class="res-sec-t">Certifications &amp; Achievements</div>
+          <div class="res-cl">Python Using AI Workshop – AI For Techies (2025)</div>
+          <div class="res-cl">Data Visualization using Power BI – Great Learning (2024)</div>
+          <div class="res-cl">C for Beginners – Great Learning (2024)</div>
+          <div class="res-cl">C Hands-On Certificate – Skill Rack</div>
+          <div class="res-cl">CodeChef Profile – 38+ Problems Solved</div>
+        </div>
+        <!-- Positions -->
+        <div class="res-sec">
+          <div class="res-sec-t">Positions of Responsibility</div>
+          <div class="res-en">
+            <div class="res-eh"><div class="res-et">Placement Coordinator</div><div class="res-em">2024 – Present</div></div>
+            <div class="res-es">Sri Eshwar College of Engineering</div>
+            <p class="res-ed">Coordinating placement training activities, assisting with student-company interactions, and managing communication within the placement cell.</p>
+          </div>
+          <div class="res-en">
+            <div class="res-eh"><div class="res-et">Hackathon Coordinator</div><div class="res-em">2024 – Present</div></div>
+            <div class="res-es">Sri Eshwar College of Engineering</div>
+            <p class="res-ed">Organized coding/hackathon events, managed participant teams, and facilitated event logistics and mentor interactions.</p>
+          </div>
+          <div class="res-en">
+            <div class="res-eh"><div class="res-et">Student Mentor</div><div class="res-em">2024 – Present</div></div>
+            <div class="res-es">Sri Eshwar College of Engineering</div>
+            <p class="res-ed">Guided junior students academically and technically; supported their project development and college onboarding.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Download Row -->
+      <div class="res-dl">
+        <button class="btn-p" onclick="window.print()">🖨️ Print Resume</button>
+        <a href="mailto:shanmugapriya.s2024aiml@sece.ac.in" class="btn-o">📧 Contact Me</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="sh reveal">
+    <div class="stag">Contact</div>
+    <h2 class="stit">Get In <span>Touch</span></h2>
+    <p class="sdesc">I'm always open to new opportunities and collaborations</p>
+  </div>
+  <div class="contact-g">
+    <div class="card con-c reveal">
+      <div class="con-ic">📧</div>
+      <div class="con-l">Email</div>
+      <a class="con-a" href="mailto:shanmugapriya.s2024aiml@sece.ac.in">shanmugapriya.s2024aiml@sece.ac.in</a>
+    </div>
+    <div class="card con-c reveal">
+      <div class="con-ic">📞</div>
+      <div class="con-l">Phone</div>
+      <a class="con-a" href="tel:+916385495420">+91 6385495420</a>
+    </div>
+    <div class="card con-c reveal">
+      <div class="con-ic">🐙</div>
+      <div class="con-l">GitHub</div>
+      <a class="con-a" href="https://github.com/ShanmugapriyaSECE" target="_blank">ShanmugapriyaSECE</a>
+    </div>
+    <div class="card con-c reveal">
+      <div class="con-ic">📍</div>
+      <div class="con-l">Location</div>
+      <span class="con-a" style="color:var(--t2);cursor:default">Coimbatore, Tamil Nadu</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Designed &amp; Built with ❤️ by <span>Shanmuga Priya S</span> · 2025</p>
+  <p style="margin-top:.4rem;font-size:.76rem">B.E. CSE (AI &amp; ML) · Sri Eshwar College of Engineering</p>
+</footer>
+
+<script>
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); } });
+}, { threshold: 0.12 });
+reveals.forEach(el => observer.observe(el));
+
+// Typed effect
+const phrases = [
+  '// Building intelligent dashboards',
+  '// Transforming data into insights',
+  '// React + TypeScript + Supabase',
+  '// AI & ML Enthusiast'
+];
+let pi = 0, ci = 0, deleting = false;
+const typed = document.querySelector('.hero-typed');
+function type() {
+  const cur = phrases[pi];
+  if (!deleting) {
+    typed.textContent = cur.slice(0, ++ci);
+    if (ci === cur.length) { deleting = true; setTimeout(type, 1800); return; }
+  } else {
+    typed.textContent = cur.slice(0, --ci);
+    if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; }
+  }
+  setTimeout(type, deleting ? 45 : 75);
+}
+type();
+
+// Smooth nav active on scroll
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  sections.forEach(s => { if(window.scrollY >= s.offsetTop - 120) cur = s.id; });
+  navLinks.forEach(a => {
+    a.style.color = a.getAttribute('href') === '#' + cur ? '#f1f5f9' : '';
+  });
+});
+</script>
 </body>
 </html>
